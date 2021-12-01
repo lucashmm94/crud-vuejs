@@ -1,0 +1,17 @@
+version: '3.3'
+volumes:
+  dependencies:
+services:
+  dev:
+    build:
+      args:
+        build-dev: 1
+      context: .
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - 8184:80
+    volumes:
+      - .:/app
+      - dependencies:/app/node_modules
+      - dependencies:/etc/nginx/conf.d
+    tty: true

@@ -1,0 +1,19 @@
+version: '3.3'
+volumes:
+  dependencies:
+services:
+  hml:
+    build:
+      args:
+        build-hml: 2
+      context: .
+      dockerfile: ./hml.Dockerfile
+    ports:
+      - 8185:80
+    volumes:
+      - .:/app
+      - dependencies:/app/node_modules
+      - dependencies:/etc/nginx/conf.d
+    tty: true
+#
+
